@@ -1,6 +1,6 @@
 # Import necessary libraries
 import pandas as pd  # For data handling and manipulation
-import joblib  # For loading saved models or data
+from joblib import load  # For loading saved models or data
 import streamlit as st  # For creating the web app interface
 import requests  # For making HTTP requests to fetch image data
 from PIL import Image  # For handling and displaying images
@@ -11,8 +11,8 @@ import datetime  # For formatting date information
 data = pd.read_excel('Music_Data.xlsx')
 
 # Load pre-computed similarity matrix and TF-IDF vectorizer
-similarity_matrix = joblib.load('similarity_matrix.pkl')
-tfidf_vectorizer = joblib.load('tfidf_vectorizer.pkl')
+similarity_matrix = load('similarity_matrix.pkl')
+tfidf_vectorizer = load('tfidf_vectorizer.pkl')
 
 # Set the title of the web app
 st.title('Music Recommendation App')

@@ -1,18 +1,20 @@
 # Import necessary libraries
 import pandas as pd  # For data handling and manipulation
-from joblib import load  # For loading saved models or data
 import streamlit as st  # For creating the web app interface
 import requests  # For making HTTP requests to fetch image data
 from PIL import Image  # For handling and displaying images
 from io import BytesIO  # For handling image data
-import datetime  # For formatting date information
 
 # Read music data from an Excel file
 data = pd.read_excel('Music_Data.xlsx')
 
-# Load pre-computed similarity matrix and TF-IDF vectorizer
-similarity_matrix = load('similarity_matrix.pkl')
-tfidf_vectorizer = load('tfidf_vectorizer.pkl')
+# Load similarity matrix from a file
+with open('similarity_matrix.pkl', 'rb') as f:
+    similarity_matrix = pickle.load(f)
+
+# Load TF-IDF vectorizer from a file
+with open('tfidf_vectorizer.pkl', 'rb') as f:
+    tfidf_vectorizer = pickle.load(f)
 
 # Set the title of the web app
 st.title('Music Recommendation App')
